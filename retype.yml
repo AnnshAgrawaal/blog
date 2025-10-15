@@ -8,8 +8,8 @@ start:
   # pro: true
 
 branding:
-  title: Annsh's Cheatsheet
-  label: Secret
+  title: Annsh's Blog
+  label: blog
 
 links:
 - text: Getting Started
