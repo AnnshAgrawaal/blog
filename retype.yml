@@ -9,11 +9,10 @@ start:
 
 branding:
   title: Annsh's Blog
-  label: blog
 
-links:
-- text: Getting Started
-  link: https://retype.com/guides/getting-started/
+meta:
+  author: "Annsh Agrawaal"
+  language: en
 
-footer:
-  copyright: "&copy; Copyright {{ year }}. All rights reserved."
+features:
+  blog: true
