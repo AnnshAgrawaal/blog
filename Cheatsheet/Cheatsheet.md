@@ -1,5 +1,15 @@
 ## Nmap 
+```sh
+sudo nmap -p- -A -Pn -v --open $IP
+```
+```sh
+sudo nmap -sS -sV -T4 -oN nmap_default.txt <IP>
+```
 
+### Edit /etc/hosts file 
+```sh
+echo "10.129.76.146 sea.htb" | sudo tee -a /etc/hosts
+```
 
 
 ### Connecting to RDP
