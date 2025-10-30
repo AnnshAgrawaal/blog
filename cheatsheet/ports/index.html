@@ -9,21 +9,24 @@
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Broken Access Control</title>
-    <meta name="title" content="Broken Access Control">
+    <title>Ports</title>
+    <meta name="title" content="Ports">
+    <meta name="description" content="Most common services and their ports (all TCP unless stated otherwise):">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://docs.example.com/owasp-top-10/broken-access-control/">
+    <link rel="canonical" href="https://docs.example.com/cheatsheet/ports/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.example.com/owasp-top-10/broken-access-control/">
-    <meta property="og:title" content="Broken Access Control">
+    <meta property="og:url" content="https://docs.example.com/cheatsheet/ports/">
+    <meta property="og:title" content="Ports">
+    <meta property="og:description" content="Most common services and their ports (all TCP unless stated otherwise):">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.example.com/owasp-top-10/broken-access-control/">
-    <meta property="twitter:title" content="Broken Access Control">
+    <meta property="twitter:url" content="https://docs.example.com/cheatsheet/ports/">
+    <meta property="twitter:title" content="Ports">
+    <meta property="twitter:description" content="Most common services and their ports (all TCP unless stated otherwise):">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
@@ -146,12 +149,162 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="broken-access-control" class="break-words">
+<doc-anchor-target id="ports" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#broken-access-control">#</doc-anchor-trigger>
-        <span>Broken Access Control</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ports">#</doc-anchor-trigger>
+        <span>Ports</span>
     </h1>
 </doc-anchor-target>
+<p>Most common services and their ports (all TCP unless stated otherwise):</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: center;">Port(s)</th>
+<th style="text-align: center;">Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code v-pre>21</code></td>
+<td style="text-align: center;">FTP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>22</code></td>
+<td style="text-align: center;">SSH</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>23</code></td>
+<td style="text-align: center;">Telnet</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>25</code></td>
+<td style="text-align: center;">SMTP (mail)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>587</code></td>
+<td style="text-align: center;">secure SMTP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>53</code> (UDP)</td>
+<td style="text-align: center;">DNS</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>67</code> (UDP) and <code v-pre>68</code> (UDP)</td>
+<td style="text-align: center;">DHCP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>69</code> (UDP)</td>
+<td style="text-align: center;">TFTP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>80</code></td>
+<td style="text-align: center;">HTTP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>443</code></td>
+<td style="text-align: center;">HTTPS</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>110</code></td>
+<td style="text-align: center;">POP3 (mail)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>111</code></td>
+<td style="text-align: center;">ONC RPC</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>143</code></td>
+<td style="text-align: center;">IMAP (mail)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>161</code> (UDP)</td>
+<td style="text-align: center;">SNMP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>139</code> and <code v-pre>445</code></td>
+<td style="text-align: center;">SMB</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>1433</code></td>
+<td style="text-align: center;">MSSQL</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>1978</code></td>
+<td style="text-align: center;">WiFi Mouse</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>2049</code></td>
+<td style="text-align: center;">NFS</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>3306</code></td>
+<td style="text-align: center;">MySQL</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>3389</code></td>
+<td style="text-align: center;">Windows Remote Desktop (RDP)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>5900</code></td>
+<td style="text-align: center;">VNC</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>5985</code></td>
+<td style="text-align: center;">WinRM HTTP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>5986</code></td>
+<td style="text-align: center;">WinRM HTTPS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Most common Active Directory (AD) services and their ports:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: center;">Port(s)</th>
+<th style="text-align: center;">Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code v-pre>53</code></td>
+<td style="text-align: center;">DNS</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>88</code></td>
+<td style="text-align: center;">Kerberos Authentication</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>135</code></td>
+<td style="text-align: center;">WMI RPC</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>138</code>, <code v-pre>139</code>, and <code v-pre>445</code></td>
+<td style="text-align: center;">SMB</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>389</code></td>
+<td style="text-align: center;">LDAP</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>636</code></td>
+<td style="text-align: center;">LDAPS</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>5355</code></td>
+<td style="text-align: center;">LLMNR</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code v-pre>8530</code> and <code v-pre>8531</code></td>
+<td style="text-align: center;">WSUS</td>
+</tr>
+</tbody>
+</table>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
@@ -161,13 +314,20 @@
                             
                                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../cheatsheet/ad-cheatsheet/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
+                                                <span class="block mt-1">AD Cheatsheet</span>
+                                            </span>
+                                        </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../cves/eternalblue/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../random/media/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">Eternal Blue</span>
+                                                <span class="block mt-1">Broken Access Control</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -211,6 +371,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Broken Access Control", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Ports", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
