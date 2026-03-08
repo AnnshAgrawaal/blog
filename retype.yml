@@ -18,12 +18,17 @@ start:
 #   blog: true
 
 branding:
-  title: Annsh Security Notes
+  title: Annsh's Security Notes
   # logo: /static/logo.png
 
 links:
   - text: GitHub
     link: https://github.com/AnnshAgrawaal
+    icon: mark-github
+
+  - text: LinkedIn
+    link: https://www.linkedin.com/in/annshagrawaal/
+    icon: people
 
 footer:
   copyright: "© Annsh"
@@ -43,6 +48,8 @@ navbar:
     link: /writeups
   - text: Security Notes
     link: /security-notes
+  - text: Random
+    link: /random
 
 sitemap:
   enabled: true
