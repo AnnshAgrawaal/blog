@@ -1,18 +1,48 @@
 input: .
 output: .retype
 
-url: docs.example.com # Use your website address here
+# url: docs.example.com # Use your website address here
 
 start:
   # Uncomment the next line to try Retype Pro features
   # pro: true
 
+# branding:
+#   title: Annsh's Blog
+
+# meta:
+#   author: "Annsh Agrawaal"
+#   language: en
+
+# features:
+#   blog: true
+
 branding:
-  title: Annsh's Blog
+  title: Annsh Security Notes
+  # logo: /static/logo.png
 
-meta:
-  author: "Annsh Agrawaal"
-  language: en
+links:
+  - text: GitHub
+    link: https://github.com/AnnshAgrawaal
 
-features:
-  blog: true
+footer:
+  copyright: "© Annsh"
+
+search:
+  enabled: true
+
+edit:
+  repo: https://github.com/AnnshAgrawaal/blog
+
+navbar:
+  - text: Blog
+    link: /blog
+  - text: OSCP
+    link: /oscp
+  - text: Writeups
+    link: /writeups
+  - text: Security Notes
+    link: /security-notes
+
+sitemap:
+  enabled: true

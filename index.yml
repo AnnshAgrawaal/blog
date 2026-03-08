@@ -3,3 +3,7 @@ layout: page
 order: 100
 expanded: true
 breadcrumb: false
+- Blog: blog
+- OSCP Guide: oscp
+- Machine Walkthroughs: writeups
+- Security Notes: security-notes

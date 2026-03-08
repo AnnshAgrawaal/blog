@@ -1,3 +1,0 @@
-# Eternal Blue
-
-icon: computer
