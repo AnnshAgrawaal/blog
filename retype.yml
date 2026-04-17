@@ -2,6 +2,7 @@ input: .
 output: .retype
 
 # url: docs.example.com # Use your website address here
+url: https://blog.annsh.online/
 
 start:
   # Uncomment the next line to try Retype Pro features
