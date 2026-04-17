@@ -1,0 +1,28 @@
+﻿# Security Blog
+
+> Research, walkthroughs, and security notes focused on:
+
+- [Security Blog](https://blog.annsh.online/index.md): Security Blog
+- [Machine Walkthroughs](https://blog.annsh.online/walkthroughs/index.md): HackTheBox, TryHackMe, and CTF machine walkthroughs.
+- [OSCP Preparation Guide](https://blog.annsh.online/oscp/index.md): OSCP preparation resources, enumeration techniques, privilege escalation notes, and cheatsheets.
+- [Random](https://blog.annsh.online/random/index.md): Miscellaneous posts, lists, and things I find interesting.
+- [Security Notes](https://blog.annsh.online/security-notes/index.md): Application security notes, OWASP Top 10 explanations, CVE analysis, and security concepts.
+
+## Machine Walkthroughs
+
+- [Pelican — OSCP Machine Walkthrough](https://blog.annsh.online/walkthroughs/pelican-walkthrough.md): Platform: Offensive Security Proving Grounds OS: Linux (Debian) Difficulty: Intermediate IP: 192.168.xxx.xxx
+
+## OSCP Guide
+
+- [AD Cheatsheet](https://blog.annsh.online/oscp/ad-cheatsheet.md): Mindmap = https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg
+- [Cheatsheet](https://blog.annsh.online/oscp/cheatsheet.md): https://hashcat.net/wiki/doku.php?id=example_hashes
+- [Initial Access](https://blog.annsh.online/oscp/template-windows.md): export IP={IP}
+- [Ports](https://blog.annsh.online/oscp/ports.md): Most common services and their ports (all TCP unless stated otherwise):
+
+## Random
+
+- [Movies, TV Shows and Documentaries to watch someday](https://blog.annsh.online/random/media.md): Silicon Valley
+
+## Security Notes
+
+- [Kali Linux Setup](https://blog.annsh.online/security-notes/setup.md): Kali Linux Images - https://www.kali.org/get-kali/#kali-virtual-machines
