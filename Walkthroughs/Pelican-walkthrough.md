@@ -1,4 +1,4 @@
-# Pelican — OSCP Machine Walkthrough
+# Pelican - OSCP Machine Walkthrough
 
 **Platform:** Offensive Security Proving Grounds  
 **OS:** Linux (Debian)  
@@ -9,7 +9,7 @@
 
 ## Overview
 
-Pelican is a Linux machine that chains together a publicly known Exhibitor-for-ZooKeeper RCE vulnerability to get an initial foothold as a low-privileged user, then abuses a `sudo` misconfiguration allowing `gcore` to be run as root — leaking root credentials straight out of process memory.
+Pelican is a Linux machine that chains together a publicly known Exhibitor for ZooKeeper RCE vulnerability to get an initial foothold as a low-privileged user, then abuses a `sudo` misconfiguration allowing `gcore` to be run as root ->  leaking root credentials straight out of process memory.
 
 ---
 
@@ -32,24 +32,24 @@ PORT      STATE SERVICE     VERSION
 
 A lot going on here. The key ones to note:
 
-- **Port 8080** — Jetty returns a 404, but port 8081 (nginx) redirects straight to `http://192.168.241.98:8080/exhibitor/v1/ui/index.html`.
-- **Port 2181** — ZooKeeper, which ties directly into the above.
-- **Port 631** — CUPS 2.2, no usable exploits on searchsploit.
+- **Port 8080** ->  Jetty returns a 404, but port 8081 (nginx) redirects straight to `http://192.168.241.98:8080/exhibitor/v1/ui/index.html`.
+- **Port 2181** ->  ZooKeeper, which ties directly into the above.
+- **Port 631** ->  CUPS 2.2, no usable exploits on searchsploit.
 
 ### Dead ends
 
-- SMB (139/445) — no accessible shares.
-- CUPS 2.2 — no exploits.
-- ZooKeeper (2181) — no direct exploit, but exploitable indirectly via Exhibitor.
-- Jetty on 8080 — directory and file fuzzing returned nothing useful.
+- SMB (139/445) ->  no accessible shares.
+- CUPS 2.2 ->  no exploits.
+- ZooKeeper (2181) ->  no direct exploit, but exploitable indirectly via Exhibitor.
+- Jetty on 8080 ->  directory and file fuzzing returned nothing useful.
 
 ---
 
-## Initial Foothold — Exhibitor for ZooKeeper RCE
+## Initial Foothold ->  Exhibitor for ZooKeeper RCE
 
 Navigating to `http://192.168.xxx.xxx:8081` redirects to the **Exhibitor for ZooKeeper** web UI on port 8080.
 
-Exhibitor has a well-known RCE via the **Config** tab — the `java.env script` field is executed by the ZooKeeper process. Searchsploit has an entry for this.
+Exhibitor has a well-known RCE via the **Config** tab ->  the `java.env script` field is executed by the ZooKeeper process. Searchsploit has an entry for this.
 
 **Steps:**
 1. Click the **Config** tab in the Exhibitor UI.
@@ -70,7 +70,7 @@ sudo rlwrap nc -nvlp 4444
 
 The shell connects back and we're running as **charles** out of `/opt/zookeeper`.
 
-![Initial shell as charles](/assets/img/pelican/foothold.png)
+![Initial shell as charles](pelican-zookeeper.png)
 
 ---
 
@@ -78,18 +78,13 @@ The shell connects back and we're running as **charles** out of `/opt/zookeeper`
 
 Once in, navigate to charles' home directory and grab the local flag:
 
-```bash
-cd /home/charles
-cat local.txt
-```
-
 **Local flag:** `d5baf9f7aee5740cb3ddb5a6f95b4xxx`
 
-![Local flag](/assets/img/pelican/local-flag.png)
+![Local flag](pelican-local.png)
 
 ---
 
-## Privilege Escalation — gcore + Process Memory Dump
+## Privilege Escalation ->  gcore + Process Memory Dump
 
 ### sudo -l
 
@@ -98,7 +93,7 @@ User charles may run the following commands on pelican:
     (ALL) NOPASSWD: /usr/bin/gcore
 ```
 
-Charles can run `gcore` as root — a GNU debugger utility that dumps the memory of a running process to a file. The plan: dump a root-owned process and grep the output for credentials.
+Charles can run `gcore` as root ->  a GNU debugger utility that dumps the memory of a running process to a file. The plan: dump a root-owned process and grep the output for credentials.
 
 ### Find a root process to dump
 
@@ -128,7 +123,10 @@ The strings output reveals:
 001 Password: root:ClogKingpinInning731
 ```
 
-![Credentials in memory dump](/assets/img/pelican/creds.png)
+![Credentials in memory dump 1](pelican-dump-1.png)
+
+
+![Credentials in memory dump 2](pelican-dump-2.png)
 
 ### Switch to root
 
@@ -148,7 +146,7 @@ cat proof.txt
 
 **Root flag:** `a0cd40939dd948f03097858b6571cxxx`
 
-![Proof](/assets/img/pelican/proof.png)
+![Proof](pelican-proof.png)
 
 ---
 
@@ -156,7 +154,7 @@ cat proof.txt
 
 | Stage | Method |
 |---|---|
-| Recon | Nmap — identified Exhibitor UI on 8081→8080 |
+| Recon | Nmap ->  identified Exhibitor UI on 8081→8080 |
 | Foothold | Exhibitor ZooKeeper RCE via `java.env script` field |
 | User | Shell as `charles` |
 | PrivEsc | `sudo gcore` → dump root process memory → credentials in plaintext |
@@ -166,6 +164,6 @@ cat proof.txt
 
 ## Key Takeaways
 
-- **Exhibitor for ZooKeeper** should never be exposed without authentication — the config UI allows arbitrary command execution by design.
+- **Exhibitor for ZooKeeper** should never be exposed without authentication ->  the config UI allows arbitrary command execution by design.
 - **`gcore` as sudo** is a classic privesc primitive. Any process running as root can have its memory dumped, and sensitive data (passwords, tokens, keys) often lives unencrypted in process memory.
 - Always check `ps aux` for interesting root processes when you have `gcore` or `ptrace` capabilities.
